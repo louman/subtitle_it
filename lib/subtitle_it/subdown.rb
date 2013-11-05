@@ -51,6 +51,7 @@ module SubtitleIt
       }
 
       result = request('SearchSubtitles', [args])
+      binding.pry
       return [] unless result['data'] # if no results result['data'] == false
       result['data'].inject([]) do |subs, sub_info|
         subs << Subtitle.new({:info => sub_info})
@@ -76,21 +77,6 @@ module SubtitleIt
         "#{k} -> #{v}"
       end.join("\n")
     end
-#
-#    def Subdown.opsub_id( language )   # Get the Opensubtitle.org language id from the language string (e.g. 'French' returns 'fra' )
-#      ary = LANGS.find do |sym_lang|
-#        sym_lang if sym_lang[1].downcase == language.downcase
-#      end
-#      OPSUB_LANGS[ ary[0] ]
-#    end
-
-#    def Subdown.subtitle_languages
-#      lang_ary = []
-#      OPSUB_LANGS.each_key do |key|
-#        lang_ary.push( LANGS[key] )
-#      end
-#      lang_ary.sort.inject( "" ) { |str, lang| str << lang + " " }
-#    end
 
     private
 
