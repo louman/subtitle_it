@@ -5,6 +5,7 @@ module SubtitleIt
     CHUNK_SIZE = 64 * 1024 # in bytes
 
     def self.compute_haxx(filename)
+      return filename
       filesize = File.size(filename)
       haxx = filesize
 
